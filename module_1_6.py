@@ -1,8 +1,7 @@
 my_dict = {"Яблок" : 258, "Бананов" : 426, "Капусты" : 37}
 print(my_dict)
 print(my_dict["Бананов"])
-my_dict_1 = my_dict.get("Кукурузы")
-print(my_dict_1)
+print(my_dict.get("Кукурузы"))
 my_dict.update({"Черешни" : 337,
                 "Картошки" : 585})
 print(my_dict)
