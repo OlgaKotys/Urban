@@ -4,6 +4,8 @@ print(my_dict["Бананов"])
 print(my_dict.get("Кукурузы"))
 my_dict.update({"Черешни" : 337,
                 "Картошки" : 585})
+
+print(my_dict.pop('Яблок'))
 print(my_dict)
 
 my_set = {458, 326, 334, 'string', 458, 334, True, 326, 458, 'string'}
