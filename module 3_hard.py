@@ -1,7 +1,7 @@
 def calculate_structure_sum(data):
     total_sum = 0
 
-    if isinstance(data, int):
+    if isinstance(data, (int, float)):
         return data
     elif isinstance(data, str):
         return len(data)
