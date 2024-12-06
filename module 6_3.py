@@ -42,11 +42,6 @@ class AquaticAnimal(Animal):
 
     def dive_in(self, dz):
         new_z = self._cords[2] - abs(dz) * (self.speed / 2)
-        if new_z < 0:
-            print("It's too deep, i can't dive :(")
-        else:
-            self._cords[2] = new_z
-        self.speed /= 2
 
 class PoisonousAnimal(Animal):
     _DEGREE_OF_DANGER = 8
