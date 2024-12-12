@@ -13,10 +13,10 @@ elif score_1 < score_2 or (score_1 == score_2 and team1_time < team2_time):
     challenge_result = 'Победа команды Волшебники данных!'
 else: challenge_result = 'Ничья!'
 
-team1_participants = "В команде Мастера кода участников: %d!" % team1_num
+team1_participants = "В команде Мастера кода участников: %s!" % team1_num
 print(team1_participants)
 
-total_participants = "Итого сегодня в командах участников: %d и %d!" % (team1_num, team2_num)
+total_participants = "Итого сегодня в командах участников: %s и %s!" % (team1_num, team2_num)
 print(total_participants)
 
 team2_score = "Команда Волшебники данных решила задач: {}!".format(score_2)
