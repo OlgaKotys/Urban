@@ -43,8 +43,10 @@ class UrTube:
         for user in self.users:
             if user.nickname == nickname and user.password == password_hash:
                 self.current_user = user
+                print(f"Успешный вход в аккаунт: {nickname}")
                 return True
-        return False
+            print("Ошибка входа. Проверьте логин и пароль.")
+            return False
 
     def register(self, nickname, password, age):
         for user in self.users:
@@ -54,18 +56,28 @@ class UrTube:
         new_user = User(nickname, password, age)
         self.users.append(new_user)
         self.current_user = new_user
+        print(f"Пользователь {nickname} успешно зарегистрирован")
 
     def log_out(self):
         self.current_user = None
+        print("Вы вышли из аккаунта")
 
     def add(self, *videos):
         for video in videos:
             if not any(v.title == video.title for v in self.videos):
                 self.videos.append(video)
+                print(f"Видео '{video.title}' успешно добавлено")
+            else:
+                print(f"Видео '{video.title}' уже существует")
 
     def get_videos(self, search_word):
         search_word = search_word.lower()
-        return [video.title for video in self.videos if search_word in video.title.lower()]
+        found_videos = [video.title for video in self.videos if search_word in video.title.lower()]
+        if found_videos:
+            return found_videos
+        else:
+            print(f"Видео по запросу '{search_word}' не найдено")
+            return []
 
     def watch_video(self, title):
         if not self.current_user:
