@@ -10,6 +10,8 @@ def scan_directory(directory):
             filesize = os.path.getsize(filepath)
             parent_dir = os.path.dirname(filepath)
             print(
-                f'Обнаружен файл: {file}, Путь: {filepath}, Размер: {filesize} байт, Время изменения: {formatted_time}, Родительская директория: {parent_dir}')
+                f'Обнаружен файл: {file}, Путь: {filepath}, Размер: {filesize} байт, Время изменения: {formatted_time}, '
+                f'Родительская директория: {parent_dir}')
+
 directory = 'D:\My Documents\Учёба\Урбан'
 scan_directory(directory)
