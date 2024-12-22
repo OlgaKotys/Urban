@@ -1,13 +1,10 @@
 class UnsupportedTypeError(Exception):
-    """Пользовательское исключение для неподдерживаемых типов данных."""
     pass
 
 def add_everything_up(a, b):
     try:
-        if type(a) != type(b):
-            raise TypeError
-        if not isinstance(a, (int, float, str)) or not isinstance(b, (int, float, str)):
-            raise UnsupportedTypeError("Неподдерживаемый тип данных.")
+        if isinstance(a, str) or isinstance(b, str):
+            raise TypeError("Неподдерживаемый тип данных.")
         return a + b
     except TypeError:
         return str(a) + str(b)
