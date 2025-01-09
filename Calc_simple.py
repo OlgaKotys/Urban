@@ -51,6 +51,11 @@ def button_equal():
         else:
             entry.insert(0, first_number / second_number)
 
+def button_decimal():
+    current = entry.get()
+    if '.' not in current:
+        entry.insert(tk.END, '.')
+
 root = tk.Tk()
 root.title("Калькулятор")
 
@@ -61,25 +66,29 @@ buttons = [
     ('1', 1, 0), ('2', 1, 1), ('3', 1, 2), ('+', 1, 3),
     ('4', 2, 0), ('5', 2, 1), ('6', 2, 2), ('-', 2, 3),
     ('7', 3, 0), ('8', 3, 1), ('9', 3, 2), ('*', 3, 3),
-    ('C', 4, 0), ('0', 4, 1), ('=', 4, 2), ('/', 4, 3)
+    ('C', 4, 0), ('0', 4, 1), ('.', 4, 2), ('/', 4, 3),
+    ('=', 5, 0, 4)
 ]
 
-for (text, row, col) in buttons:
-    if text == '=':
-        button = tk.Button(root, text=text, padx=20, pady=20, command=button_equal)
-    elif text == 'C':
-        button = tk.Button(root, text=text, padx=20, pady=20, command=button_clear)
-    elif text == '+':
-        button = tk.Button(root, text=text, padx=20, pady=20, command=button_add)
-    elif text == '-':
-        button = tk.Button(root, text=text, padx=20, pady=20, command=button_subtract)
-    elif text == '*':
-        button = tk.Button(root, text=text, padx=20, pady=20, command=button_multiply)
-    elif text == '/':
-        button = tk.Button(root, text=text, padx=20, pady=20, command=button_divide)
-    else:
-        button = tk.Button(root, text=text, padx=20, pady=20, command=lambda num=text: button_click(num))
+for button in buttons:
+    text, row, col = button[:3]
+    colspan = button[3] if len(button) == 4 else 1
 
-    button.grid(row=row, column=col, sticky="nsew")
+    if text == '=':
+        tk.Button(root, text=text, padx=20, pady=20, command=button_equal).grid(row=row, column=col, columnspan=colspan, sticky="nsew")
+    elif text == 'C':
+        tk.Button(root, text=text, padx=20, pady=20, command=button_clear).grid(row=row, column=col, sticky="nsew")
+    elif text == '+':
+        tk.Button(root, text=text, padx=20, pady=20, command=button_add).grid(row=row, column=col, sticky="nsew")
+    elif text == '-':
+        tk.Button(root, text=text, padx=20, pady=20, command=button_subtract).grid(row=row, column=col, sticky="nsew")
+    elif text == '*':
+        tk.Button(root, text=text, padx=20, pady=20, command=button_multiply).grid(row=row, column=col, sticky="nsew")
+    elif text == '/':
+        tk.Button(root, text=text, padx=20, pady=20, command=button_divide).grid(row=row, column=col, sticky="nsew")
+    elif text == '.':
+        tk.Button(root, text=text, padx=20, pady=20, command=button_decimal).grid(row=row, column=col, sticky="nsew")
+    else:
+        tk.Button(root, text=text, padx=20, pady=20, command=lambda num=text: button_click(num)).grid(row=row, column=col, sticky="nsew")
 
 root.mainloop()
