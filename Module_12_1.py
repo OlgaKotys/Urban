@@ -15,6 +15,18 @@ class Runner:
         return self.name
 
 class RunnerTest(unittest.TestCase):
+    is_frozen = False
+
+    @classmethod
+    def setUpClass(cls):
+        cls.all_results = {}
+
+    @classmethod
+    def tearDownClass(cls):
+        for key, value in cls.all_results.items():
+            formatted_results = {place: str(runner) for place, runner in value.items()}
+            print(f"{key}: {formatted_results}")
+
     def test_walk(self):
         runner = Runner('TestRunner')
         for _ in range(10):

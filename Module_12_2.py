@@ -40,8 +40,8 @@ class Tournament:
 
         return finishers
 
-
 class TournamentTest(unittest.TestCase):
+    is_frozen = True
 
     @classmethod
     def setUpClass(cls):
@@ -58,18 +58,21 @@ class TournamentTest(unittest.TestCase):
             formatted_results = {place: str(runner) for place, runner in value.items()}
             print(f"{key}: {formatted_results}")
 
+    @unittest.skip('Тесты в этом кейсе заморожены')
     def test_race_usain_nick(self):
         tournament = Tournament(90, self.runner_usain, self.runner_nick)
         results = tournament.start()
         self.__class__.all_results["Усэйн vs Ник"] = results
         self.assertTrue(results[max(results.keys())].name == "Ник")
 
+    @unittest.skip('Тесты в этом кейсе заморожены')
     def test_race_andrey_nick(self):
         tournament = Tournament(90, self.runner_andrey, self.runner_nick)
         results = tournament.start()
         self.__class__.all_results["Андрей vs Ник"] = results
         self.assertTrue(results[max(results.keys())].name == "Ник")
 
+    @unittest.skip('Тесты в этом кейсе заморожены')
     def test_race_usain_andrey_nick(self):
         tournament = Tournament(90, self.runner_usain, self.runner_andrey, self.runner_nick)
         results = tournament.start()
